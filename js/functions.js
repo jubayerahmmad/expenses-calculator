@@ -31,3 +31,7 @@ function addHiddenClassList(id) {
 function removeHiddenClassList(id) {
   document.getElementById(id).classList.remove("hidden");
 }
+
+function showError(id) {
+  document.getElementById(id).classList.remove("hidden");
+}

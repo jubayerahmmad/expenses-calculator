@@ -6,6 +6,31 @@ document.getElementById("calculate").addEventListener("click", function () {
   const totalExpenses = software + course + internet;
   const remainingBalance = income - totalExpenses;
 
+  if (income <= 0) {
+    showError("income-error");
+    return;
+  }
+  if (software <= 0) {
+    showError("software-error");
+    return;
+  }
+  if (course <= 0) {
+    showError("courses-error");
+    return;
+  }
+  if (internet <= 0) {
+    showError("internet-error");
+    return;
+  }
+  if (totalExpenses <= 0) {
+    showError("logic-error");
+    return;
+  }
+
+  if (totalExpenses > income) {
+    showError("logic-error");
+    return;
+  }
   document.getElementById("total-expenses").innerText = totalExpenses;
   document.getElementById("balance").innerText = remainingBalance;
 
@@ -25,6 +50,11 @@ document
 
     document.getElementById("remaining-balance").innerText = remainingBalance;
     const savings = (remainingBalance * inputSavingsPercentage) / 100;
+
+    if (savings <= 0) {
+      showError("savings-error");
+      return;
+    }
 
     document.getElementById("savings-amount").innerText = savings;
     const finalRemainingBalance = remainingBalance - savings;
